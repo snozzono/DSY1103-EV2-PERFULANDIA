@@ -1,425 +1,207 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: May 27, 2025 at 02:07 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `perfulandia`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `clientes`
---
-
-CREATE TABLE `clientes` (
-  `id` bigint(20) NOT NULL,
-  `usuario_id` bigint(20) DEFAULT NULL,
-  `nombre_completo` varchar(100) DEFAULT NULL,
-  `rut` varchar(12) DEFAULT NULL,
-  `telefono` varchar(15) DEFAULT NULL,
-  `direccion` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `clientes`
---
-
-INSERT INTO `clientes` (`id`, `usuario_id`, `nombre_completo`, `rut`, `telefono`, `direccion`) VALUES
-(1, 1, 'Juan Bustos', '11.111.111-1', '56912345678', 'Av. Chile 123'),
-(2, 2, 'Maria Valdez', '22.222.222-2', '56987654321', 'Calle Lago 456');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cupones`
---
-
-CREATE TABLE `cupones` (
-  `id` bigint(20) NOT NULL,
-  `codigo` varchar(30) DEFAULT NULL,
-  `descuento` decimal(5,2) DEFAULT NULL,
-  `valido_hasta` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cupones`
---
-
-INSERT INTO `cupones` (`id`, `codigo`, `descuento`, `valido_hasta`) VALUES
-(1, 'MAYO2025', 10.00, '2025-05-31');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detalle_venta`
---
-
-CREATE TABLE `detalle_venta` (
-  `id` bigint(20) NOT NULL,
-  `venta_id` bigint(20) DEFAULT NULL,
-  `producto_id` bigint(20) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `precio_unitario` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `detalle_venta`
---
-
-INSERT INTO `detalle_venta` (`id`, `venta_id`, `producto_id`, `cantidad`, `precio_unitario`) VALUES
-(1, 1, 1, 1, 2500.00),
-(2, 1, 2, 1, 2300.00);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `inventario`
---
-
-CREATE TABLE `inventario` (
-  `id` bigint(20) NOT NULL,
-  `producto_id` bigint(20) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `ubicacion` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `inventario`
---
-
-INSERT INTO `inventario` (`id`, `producto_id`, `cantidad`, `ubicacion`) VALUES
-(1, 1, 100, 'Bodega Central'),
-(2, 2, 80, 'Bodega Sur');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `productos`
---
-
-CREATE TABLE `productos` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(1000) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
-  `precio` decimal(10,2) NOT NULL,
-  `categoria` varchar(50) DEFAULT NULL,
-  `marca` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `productos`
---
-
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `categoria`, `marca`) VALUES
-(1, 'Té Verde', 'Infusión relajante', 2500.00, 'Infusión', 'PerfuTea'),
-(2, 'Té Negro', 'Infusión estimulante', 2300.00, 'Infusión', 'PerfuTea');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `nombre`) VALUES
-(3, 'admin'),
-(1, 'cliente'),
-(2, 'vendedor');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tickets_soporte`
---
-
-CREATE TABLE `tickets_soporte` (
-  `id` bigint(20) NOT NULL,
-  `cliente_id` bigint(20) DEFAULT NULL,
-  `asunto` varchar(100) DEFAULT NULL,
-  `mensaje` text DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tickets_soporte`
---
-
-INSERT INTO `tickets_soporte` (`id`, `cliente_id`, `asunto`, `mensaje`, `estado`, `fecha_creacion`) VALUES
-(1, 1, 'Problema con el envío', 'No he recibido mi pedido aún.', 'abierto', '2025-05-25 18:30:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` bigint(20) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `enabled` tinyint(4) DEFAULT 1,
-  `rol_id` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `username`, `password`, `email`, `enabled`, `rol_id`) VALUES
-(1, 'jp.bustos', '*****', 'juan@example.com', 1, 1),
-(2, 'mvaldez', '*****', 'maria@example.com', 1, 1),
-(3, 'carla.m', '*****', 'carla@example.com', 1, 2),
-(4, 'admin1', '*****', 'admin@example.com', 1, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vendedores`
---
-
-CREATE TABLE `vendedores` (
-  `id` bigint(20) NOT NULL,
-  `usuario_id` bigint(20) DEFAULT NULL,
-  `sucursal` varchar(100) DEFAULT NULL,
-  `meta_mensual` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `vendedores`
---
-
-INSERT INTO `vendedores` (`id`, `usuario_id`, `sucursal`, `meta_mensual`) VALUES
-(1, 3, 'Sucursal Centro', 500000.00);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ventas`
---
-
-CREATE TABLE `ventas` (
-  `id` bigint(20) NOT NULL,
-  `cliente_id` bigint(20) DEFAULT NULL,
-  `vendedor_id` bigint(20) DEFAULT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `total` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ventas`
---
-
-INSERT INTO `ventas` (`id`, `cliente_id`, `vendedor_id`, `fecha`, `total`) VALUES
-(1, 1, 1, '2025-05-24 14:00:00', 4800.00);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_usuario_id` (`usuario_id`);
-
---
--- Indexes for table `cupones`
---
-ALTER TABLE `cupones`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `detalle_venta`
---
-ALTER TABLE `detalle_venta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_venta_id` (`venta_id`),
-  ADD KEY `idx_producto_id` (`producto_id`);
-
---
--- Indexes for table `inventario`
---
-ALTER TABLE `inventario`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_producto_id` (`producto_id`);
-
---
--- Indexes for table `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uniq_nombre` (`nombre`);
-
---
--- Indexes for table `tickets_soporte`
---
-ALTER TABLE `tickets_soporte`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_cliente_id_soporte` (`cliente_id`);
-
---
--- Indexes for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uniq_username` (`username`),
-  ADD KEY `idx_rol_id` (`rol_id`);
-
---
--- Indexes for table `vendedores`
---
-ALTER TABLE `vendedores`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_usuario_id_vendedores` (`usuario_id`);
-
---
--- Indexes for table `ventas`
---
-ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_cliente_id` (`cliente_id`),
-  ADD KEY `idx_vendedor_id` (`vendedor_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `cupones`
---
-ALTER TABLE `cupones`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `detalle_venta`
---
-ALTER TABLE `detalle_venta`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `inventario`
---
-ALTER TABLE `inventario`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tickets_soporte`
---
-ALTER TABLE `tickets_soporte`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `vendedores`
---
-ALTER TABLE `vendedores`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `ventas`
---
-ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `fk_clientes_usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Constraints for table `detalle_venta`
---
-ALTER TABLE `detalle_venta`
-  ADD CONSTRAINT `fk_detalle_venta_productos` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
-  ADD CONSTRAINT `fk_detalle_venta_ventas` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`id`);
-
---
--- Constraints for table `inventario`
---
-ALTER TABLE `inventario`
-  ADD CONSTRAINT `fk_inventario_productos` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
-
---
--- Constraints for table `tickets_soporte`
---
-ALTER TABLE `tickets_soporte`
-  ADD CONSTRAINT `fk_tickets_soporte_clientes` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`);
-
---
--- Constraints for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`);
-
---
--- Constraints for table `vendedores`
---
-ALTER TABLE `vendedores`
-  ADD CONSTRAINT `fk_vendedores_usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Constraints for table `ventas`
---
-ALTER TABLE `ventas`
-  ADD CONSTRAINT `fk_ventas_clientes` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`),
-  ADD CONSTRAINT `fk_ventas_vendedores` FOREIGN KEY (`vendedor_id`) REFERENCES `vendedores` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- SQL normalizado para Perfulandia
+-- Versión corregida por ChatGPT
+
+CREATE DATABASE IF NOT EXISTS perfulandia;
+USE perfulandia;
+
+-- Roles
+CREATE TABLE roles (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE
+);
+
+-- Usuarios
+CREATE TABLE usuarios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    rol_id BIGINT,
+    FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+-- Sucursales
+CREATE TABLE sucursales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion TEXT NOT NULL,
+    telefono VARCHAR(20),
+    encargado VARCHAR(100)
+);
+
+-- Vendedores
+CREATE TABLE vendedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    sucursal_id INT NOT NULL,
+    fecha_ingreso DATE,
+    activo BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id)
+);
+
+-- Clientes
+CREATE TABLE clientes (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT NOT NULL,
+    nombre_completo VARCHAR(100),
+    rut VARCHAR(12),
+    telefono VARCHAR(15),
+    direccion TEXT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- Categorías y marcas
+CREATE TABLE categorias (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255)
+);
+
+CREATE TABLE marcas (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255)
+);
+
+-- Productos
+CREATE TABLE productos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    descripcion TEXT,
+    precio DECIMAL(10,2),
+    stock INT,
+    categoria_id BIGINT,
+    marca_id BIGINT,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id),
+    FOREIGN KEY (marca_id) REFERENCES marcas(id)
+);
+
+-- Ventas
+CREATE TABLE ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id BIGINT NOT NULL,
+    vendedor_id INT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(10,2),
+    descuento DECIMAL(10,2),
+    total_final DECIMAL(10,2),
+    estado VARCHAR(50),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+    FOREIGN KEY (vendedor_id) REFERENCES vendedores(id)
+);
+
+-- Detalle de venta
+CREATE TABLE detalle_venta (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    venta_id INT NOT NULL,
+    producto_id BIGINT NOT NULL,
+    cantidad INT,
+    precio_unitario DECIMAL(10,2),
+    FOREIGN KEY (venta_id) REFERENCES ventas(id),
+    FOREIGN KEY (producto_id) REFERENCES productos(id)
+);
+
+-- Cupones
+CREATE TABLE cupones (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(30),
+    descuento DECIMAL(5,2),
+    valido_hasta DATE
+);
+
+-- Tabla intermedia cupones aplicados (muchos a muchos)
+CREATE TABLE cupones_aplicados (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    cupon_id BIGINT NOT NULL,
+    venta_id INT NOT NULL,
+    FOREIGN KEY (cupon_id) REFERENCES cupones(id),
+    FOREIGN KEY (venta_id) REFERENCES ventas(id)
+);
+
+-- Transportistas
+CREATE TABLE transportistas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100)
+);
+
+-- Estados de envío
+CREATE TABLE estados_envio (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    descripcion TEXT
+);
+
+-- Envíos
+CREATE TABLE envios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    venta_id INT NOT NULL,
+    direccion_envio TEXT,
+    estado_envio_id INT NOT NULL,
+    transportista_id INT NOT NULL,
+    fecha_envio DATE,
+    fecha_entrega DATE,
+    tracking VARCHAR(100),
+    FOREIGN KEY (venta_id) REFERENCES ventas(id),
+    FOREIGN KEY (estado_envio_id) REFERENCES estados_envio(id),
+    FOREIGN KEY (transportista_id) REFERENCES transportistas(id)
+);
+
+-- Inventario y movimientos
+CREATE TABLE almacenes (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    direccion VARCHAR(255),
+    ubicacion VARCHAR(255)
+);
+
+CREATE TABLE inventario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    producto_id BIGINT NOT NULL,
+    cantidad INT,
+    almacen_id BIGINT,
+    FOREIGN KEY (producto_id) REFERENCES productos(id),
+    FOREIGN KEY (almacen_id) REFERENCES almacenes(id)
+);
+
+CREATE TABLE movimientos_inventario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    inventario_id BIGINT NOT NULL,
+    cantidad INT,
+    fecha DATETIME,
+    motivo VARCHAR(255),
+    tipo VARCHAR(255),
+    FOREIGN KEY (inventario_id) REFERENCES inventario(id)
+);
+
+-- Metas por sucursal
+CREATE TABLE metas_sucursal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sucursal_id INT NOT NULL,
+    mes TINYINT,
+    anio SMALLINT,
+    monto_meta DECIMAL(10,2),
+    observacion TEXT,
+    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id)
+);
+
+-- Soporte al cliente
+CREATE TABLE tipo_soporte (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    descripcion TEXT
+);
+
+CREATE TABLE ticket_soporte (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id BIGINT NOT NULL,
+    tipo_soporte_id INT NOT NULL,
+    asunto VARCHAR(100),
+    mensaje TEXT,
+    estado VARCHAR(50),
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_resolucion TIMESTAMP,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+    FOREIGN KEY (tipo_soporte_id) REFERENCES tipo_soporte(id)
+);
