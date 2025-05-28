@@ -1,7 +1,7 @@
-package com.example.Clientes.controllers;
+package com.perfulandia.Clientes.controllers;
 
-import com.example.Clientes.models.Direccion;
-import com.example.Clientes.services.DireccionService;
+import com.perfulandia.Clientes.models.Direccion;
+import com.perfulandia.Clientes.services.DireccionService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

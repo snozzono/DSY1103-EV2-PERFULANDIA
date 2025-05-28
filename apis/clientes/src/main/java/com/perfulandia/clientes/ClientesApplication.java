@@ -1,4 +1,4 @@
-package com.perfulandia.clientes;
+package com.perfulandia.Clientes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

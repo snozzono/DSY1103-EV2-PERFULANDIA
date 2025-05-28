@@ -1,20 +1,21 @@
-package com.example.Clientes.models;
+package com.perfulandia.Clientes.models;
+
 import jakarta.persistence.*;
 import lombok.Data;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "historial_compras")
+@Table(name = "direcciones")
 @Data
-public class HistorialCompra {
+public class Direccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String producto;
-    private Integer cantidad;
-    private LocalDate fechaCompra;
+    private String calle;
+    private String numero;
+    private String comuna;
+    private String ciudad;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

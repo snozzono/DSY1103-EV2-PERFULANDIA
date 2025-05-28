@@ -1,7 +1,7 @@
-package com.example.Clientes.controllers;
+package com.perfulandia.Clientes.controllers;
 
-import com.example.Clientes.models.HistorialCompra;
-import com.example.Clientes.services.HistorialCompraService;
+import com.perfulandia.Clientes.models.HistorialCompra;
+import com.perfulandia.Clientes.services.HistorialCompraService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

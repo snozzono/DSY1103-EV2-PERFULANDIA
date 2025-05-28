@@ -1,4 +1,4 @@
-package com.example.Clientes.models;
+package com.perfulandia.Clientes.models;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package com.example.Clientes.services;
+package com.perfulandia.Clientes.services;
 
-import com.example.Clientes.models.Direccion;
-import com.example.Clientes.repository.DireccionRepository;
+import com.perfulandia.Clientes.models.Direccion;
+import com.perfulandia.Clientes.repository.DireccionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

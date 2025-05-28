@@ -1,7 +1,7 @@
-package com.example.Clientes.controllers;
+package com.perfulandia.Clientes.controllers;
 
-import com.example.Clientes.models.Cliente;
-import com.example.Clientes.services.ClienteService;
+import com.perfulandia.Clientes.models.Cliente;
+import com.perfulandia.Clientes.services.ClienteService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

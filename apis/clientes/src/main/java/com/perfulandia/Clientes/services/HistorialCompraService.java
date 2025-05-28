@@ -1,7 +1,7 @@
-package com.example.Clientes.services;
+package com.perfulandia.Clientes.services;
 
-import com.example.Clientes.models.HistorialCompra;
-import com.example.Clientes.repository.HistorialCompraRepository;
+import com.perfulandia.Clientes.models.HistorialCompra;
+import com.perfulandia.Clientes.repository.HistorialCompraRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

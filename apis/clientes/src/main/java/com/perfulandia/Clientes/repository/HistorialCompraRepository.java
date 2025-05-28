@@ -1,6 +1,6 @@
-package com.example.Clientes.repository;
+package com.perfulandia.Clientes.repository;
 
-import com.example.Clientes.models.HistorialCompra;
+import com.perfulandia.Clientes.models.HistorialCompra;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HistorialCompraRepository extends JpaRepository<HistorialCompra, Long> {
