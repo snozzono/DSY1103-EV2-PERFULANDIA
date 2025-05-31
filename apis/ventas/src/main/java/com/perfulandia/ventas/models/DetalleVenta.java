@@ -17,7 +17,7 @@ public class DetalleVenta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "cliente_id", nullable = false)
@@ -31,5 +31,5 @@ public class DetalleVenta {
     private int cantidad;
 
     @Column(nullable = false)
-    private int precio_unitario;
+    private int precioUnitario;
 }

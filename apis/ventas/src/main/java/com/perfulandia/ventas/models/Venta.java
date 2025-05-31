@@ -17,7 +17,7 @@ public class Venta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer idVenta;
 
     @OneToOne
     @JoinColumn(name = "cliente_id", nullable = false)
