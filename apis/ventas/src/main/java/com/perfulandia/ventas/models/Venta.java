@@ -1,6 +1,7 @@
 package com.perfulandia.ventas.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.perfulandia.Clientes.models.Cliente;
 import com.perfulandia.vendedores.models.Vendedor;
@@ -41,4 +42,10 @@ public class Venta {
 
     @Column(nullable = false)
     private String estado;
+
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Integer> cuponesAplicados;
+
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<String> productos; // prodcutos con DetalleVenta
 }

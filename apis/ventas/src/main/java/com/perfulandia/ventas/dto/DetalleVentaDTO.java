@@ -1,14 +1,18 @@
 package com.perfulandia.ventas.dto;
 
+import java.sql.Date;
+
 import com.perfulandia.Clientes.models.Cliente;
 import com.perfulandia.productos.models.Producto;
 
-public class DetalleVenta {
+import lombok.*;
 
-    private Integer idDetalleVenta;
-    private Cliente cliente;
+@Data
+public class DetalleVentaDTO {
+
     private Producto producto; 
-    private int cantidad;
-    private int precioUnitario;
+    private Integer cantidad;
+    private Integer precioUnitario;
+
 
 }

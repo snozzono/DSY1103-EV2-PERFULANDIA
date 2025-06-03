@@ -1,0 +1,17 @@
+Manuel:
+- clientes 
+- productos 
+- inventario
+- auth
+- envíos
+Martín:
+- ventas - ya
+- gateway/conexiones
+- reportes (opcional)
+- Soporte 
+- vendedores
+
+models -> repo -> controllers -> extras -> services
+
+
+controllers -> models -> repo -> mapper -> dto -> request -> services
