@@ -6,7 +6,7 @@ Manuel:
 - envíos
 Martín:
 - ventas - ya
-- gateway/conexiones
+- gateway/conexiones - ya
 - reportes (opcional)
 - Soporte - ya
 - vendedores - ya
@@ -17,3 +17,6 @@ models -> repo -> controllers -> extras -> services
 controllers -> models -> repo -> dto (va con todo) -> request (va sin id) -> mapper -> services
 
 AppConfig -> controllers -> models -> repo -> dto (va con todo) -> request (va sin id) -> mapper -> security -> services -> ProxyController
+
+security
+publicRoutes -> jwtutil -> userDetailsImpl -> userdetailserviceimpl -> jwtfilter -> SecurityConfig
