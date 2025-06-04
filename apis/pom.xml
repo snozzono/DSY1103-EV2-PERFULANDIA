@@ -19,6 +19,7 @@
         <module>ventas</module>
         <module>vendedores</module>
         <module>auth</module>
+        <module>soporte</module>
     </modules>
 
     <properties>

@@ -1,7 +1,5 @@
 package com.perfulandia.ventas.models;
 
-import java.sql.Date;
-
 import com.perfulandia.Clientes.models.Cliente;
 import com.perfulandia.productos.models.Producto;
 
@@ -17,19 +15,15 @@ public class DetalleVenta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
 
     @Column(nullable = false)
-    private int cantidad;
+    private Integer cantidad;
 
     @Column(nullable = false)
-    private int precio_unitario;
+    private Integer precioUnitario;
 }

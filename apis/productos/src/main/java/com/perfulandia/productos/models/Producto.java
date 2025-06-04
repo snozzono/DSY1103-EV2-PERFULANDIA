@@ -1,31 +1,43 @@
 package com.perfulandia.productos.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.math.BigDecimal;
+import com.perfulandia.productos.models.*;
 
+@Data
 @Entity
 @Table(name = "productos")
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Producto {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idProducto;
 
+    @Column(nullable = false, unique = true)
     private String nombre;
+
+    @Column(nullable = false)
     private String descripcion;
-    private Integer stock;
+
+    @Column(nullable = false)
+    private Long precio;
+
+    @Column(nullable = false)
+    private Long stock;
+
+    @Column(nullable = false)
+    private String estado; // Activo, Inactivo, etc.
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-    
-    @ManyToOne
-    @JoinColumn(name = "marca_id")
-    private Marca marca;
+    @JoinColumn(name = "marca_id", nullable = false)
+    private Marca marcas; // Relación con la entidad marcas, si es necesario
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal precio;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = true)
+    private Categoria categorias; // Relación con la entidad categorias, si es necesario
 }

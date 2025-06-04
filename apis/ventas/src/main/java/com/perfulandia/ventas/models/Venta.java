@@ -1,9 +1,10 @@
 package com.perfulandia.ventas.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.perfulandia.Clientes.models.Cliente;
-import com.perfulandia.vendedores.models.Vendedor;
+import com.perfulandia.vendedores.models.Vendedores;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +18,7 @@ public class Venta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer idVenta;
 
     @OneToOne
     @JoinColumn(name = "cliente_id", nullable = false)
@@ -25,7 +26,7 @@ public class Venta {
 
     @OneToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
-    private Vendedor vendedor;
+    private Vendedores vendedor;
 
     @Column(nullable = false)
     private Date fecha;
@@ -41,4 +42,10 @@ public class Venta {
 
     @Column(nullable = false)
     private String estado;
+
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Integer> cuponesAplicados;
+
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<String> productos; // prodcutos con DetalleVenta
 }

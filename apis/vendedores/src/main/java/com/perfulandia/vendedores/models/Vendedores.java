@@ -12,23 +12,23 @@ import lombok.*;
 @Table(name = "vendedores")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vendedor {
+public class Vendedores {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "usuario_id", nullable = false, unique = true)
     private Usuario usuario;
 
-    @OneToOne
-    @JoinColumn(name = "sucursal_id", nullable = false, unique = true)
+    @ManyToOne
+    @JoinColumn(name = "sucursal_id", nullable = false)
     private Sucursales sucursal;
 
     @Column(nullable = false)
-    private Date fecha_ingreso;
+    private Date fechaIngreso;
 
     @Column(nullable = false, unique = true)
-    private int activo;
+    private boolean activo;
 }
