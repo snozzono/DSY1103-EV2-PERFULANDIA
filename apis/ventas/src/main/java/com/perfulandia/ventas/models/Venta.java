@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.perfulandia.Clientes.models.Cliente;
-import com.perfulandia.vendedores.models.Vendedor;
+import com.perfulandia.vendedores.models.Vendedores;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,7 +26,7 @@ public class Venta {
 
     @OneToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
-    private Vendedor vendedor;
+    private Vendedores vendedor;
 
     @Column(nullable = false)
     private Date fecha;

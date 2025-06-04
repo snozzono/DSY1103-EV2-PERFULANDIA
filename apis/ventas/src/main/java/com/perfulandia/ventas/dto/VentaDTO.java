@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.perfulandia.Clientes.models.Cliente;
-import com.perfulandia.vendedores.models.Vendedor;
+import com.perfulandia.vendedores.models.Vendedores;
 import com.perfulandia.ventas.models.Cupones;
 import com.perfulandia.ventas.models.CuponesAplicados;
 
@@ -19,7 +19,7 @@ public class VentaDTO {
 
     private Integer idVenta;
     private Cliente cliente;
-    private Vendedor vendedor;
+    private Vendedores vendedor;
     private Date fecha;
     private Integer total;
     private Double descuento;

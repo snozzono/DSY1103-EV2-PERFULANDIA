@@ -12,7 +12,7 @@ public class Sucursales {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private String nombre;
@@ -20,9 +20,9 @@ public class Sucursales {
     @Column(nullable = false)
     private String direccion;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String telefono;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String encargado;
 }

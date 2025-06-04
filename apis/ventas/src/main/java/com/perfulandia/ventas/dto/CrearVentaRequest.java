@@ -14,7 +14,7 @@ import lombok.Data;
 public class CrearVentaRequest {
 
     private Cliente cliente;
-    private Vendedor vendedor;
+    private Vendedores vendedor;
     private Date fecha;
     private Integer total;
     private Double descuento;

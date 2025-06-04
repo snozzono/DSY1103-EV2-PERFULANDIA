@@ -33,7 +33,7 @@ public class ProductoService {
     }
 
     public Producto update(Long id, Producto producto) {
-        producto.setId(id);
+        producto.setIdProducto(id);
         return productoRepository.save(producto);
     }
 }
