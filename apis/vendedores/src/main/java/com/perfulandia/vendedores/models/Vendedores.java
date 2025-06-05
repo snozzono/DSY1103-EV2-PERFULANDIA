@@ -1,13 +1,11 @@
 package com.perfulandia.vendedores.models;
 
-import com.perfulandia.auth.models.Usuario;
-
 import java.sql.Date;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+@Entity(name = "VendedoresVendedores")
 @Data
 @Table(name = "vendedores")
 @AllArgsConstructor

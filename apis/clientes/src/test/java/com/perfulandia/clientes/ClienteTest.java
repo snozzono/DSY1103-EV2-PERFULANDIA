@@ -1,4 +1,4 @@
-package com.perfulandia.clientes;
+package com.perfulandia.Clientes;
 
 public class ClienteTest {
 

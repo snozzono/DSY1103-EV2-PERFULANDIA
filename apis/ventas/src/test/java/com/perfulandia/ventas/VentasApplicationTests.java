@@ -8,6 +8,7 @@ class VentasApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//vacio
 	}
 
 }

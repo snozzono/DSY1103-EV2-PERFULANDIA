@@ -2,8 +2,9 @@ package com.perfulandia.vendedores.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.*;
 
-@Entity
+@Entity(name = "sucursalesVendedores")
 @Data
 @Table(name = "sucursales")
 @AllArgsConstructor
@@ -25,4 +26,9 @@ public class Sucursales {
 
     @Column(nullable = true)
     private String encargado;
+
+    @OneToMany
+    @JoinColumn(name = "sucursal_id", referencedColumnName = "id")
+    private List<Vendedores> vendedores;
+
 }

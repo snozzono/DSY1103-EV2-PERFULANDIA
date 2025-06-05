@@ -74,6 +74,7 @@
 			<artifactId>auth</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+			
 		<!-- SpringDoc OpenAPI con Swagger UI -->
 <dependency>
     <groupId>org.springdoc</groupId>

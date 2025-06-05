@@ -15,7 +15,7 @@ public class Cupones {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCupon;
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private Integer codigo;
@@ -23,10 +23,10 @@ public class Cupones {
     @Column(nullable = false)
     private Double descuento;
 
+    @Column(nullable = true)
+    private Date validoHasta;
+
     @Column(nullable = false)
     private Date fechaExpiracion;
-
-    @OneToMany(mappedBy = "cupon", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CuponesAplicados> cuponesAplicados;
 
 }

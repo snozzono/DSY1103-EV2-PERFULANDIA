@@ -3,9 +3,10 @@ package com.perfulandia.vendedores.dto;
 import lombok.*;
 import java.sql.*;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class VendedoresDTO {
     
     private Integer idVendedor;

@@ -28,18 +28,18 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public Categoria buscarPorId(@PathVariable Long id) {
+    public Categoria buscarPorId(@PathVariable Integer id) {
         return categoriaService.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
-    public Categoria actualizar(@PathVariable Long id, @RequestBody Categoria categoria) {
+    public Categoria actualizar(@PathVariable Integer id, @RequestBody Categoria categoria) {
         categoria.setId(id);
         return categoriaService.save(categoria);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@PathVariable Integer id) {
         categoriaService.deleteById(id);
     }
 }

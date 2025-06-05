@@ -8,10 +8,10 @@ import lombok.*;
 import com.perfulandia.vendedores.config.MapperVendedores;
 import com.perfulandia.vendedores.dto.*;
 import com.perfulandia.vendedores.models.*;
+import com.perfulandia.vendedores.repositories.*;
 
 import java.util.*;
 
-import com.perfulandia.vendedores.repositories.*;
 
 @Service
 @RequiredArgsConstructor
@@ -19,15 +19,11 @@ public class VendedoresService {
 
     private final VendedoresRepository vendedoresRepository;
     private final MapperVendedores mapperVendedores;
+    private final UsuarioRepository usuarioRepository;
+    private final SucursalesRepository sucursalesRepository;
 
     public Vendedores crearVendedor(CrearVendedorRequest request) {
-        Vendedores vendedor = new Vendedores();
-        vendedor.setUsuario(mapperVendedores.getUsuarioRepository().findById(request.getIdUsuario().longValue())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + request.getIdUsuario())));
-        vendedor.setSucursal(mapperVendedores.getSucursalRepository().findById(request.getIdSucursal())
-                .orElseThrow(() -> new RuntimeException("Sucursal no encontrada con ID: " + request.getIdSucursal())));
-        vendedor.setFechaIngreso(request.getFechaIngreso());
-        vendedor.setActivo(request.isActivo());
+        Vendedores vendedor = mapperVendedores.mapearCrearVendedorRequestAVendedores(request);
         return vendedoresRepository.save(vendedor);
     }
 
@@ -45,7 +41,14 @@ public class VendedoresService {
         return vendedoresRepository.save(vendedorExistente);
     }
 
-    public List<Vendedores> obtenerVendedoresPorSucursal(Integer idSucursal) {
-        return vendedoresRepository.findBySucursalId(idSucursal);
+    public List<Vendedores> obtenerVendedoresPorSucursal(Long idSucursal) {
+
+        List<Sucursales> sucursales = sucursalesRepository.findById(idSucursal);
+        if (sucursales == null || sucursales.isEmpty()) {
+            throw new RuntimeException("Sucursal no encontrada con ID: " + idSucursal);
+        }
+        return sucursales.get(0).getVendedores();
+
+        
     }
 }

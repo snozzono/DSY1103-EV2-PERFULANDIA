@@ -1,8 +1,5 @@
 package com.perfulandia.ventas.models;
 
-import com.perfulandia.Clientes.models.Cliente;
-import com.perfulandia.productos.models.Producto;
-
 import jakarta.persistence.*;
 import lombok.*;
 

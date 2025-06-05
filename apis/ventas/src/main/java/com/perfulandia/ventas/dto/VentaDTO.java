@@ -13,18 +13,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class VentaDTO {
 
     private Integer idVenta;
-    private Cliente cliente;
-    private Vendedores vendedor;
+    private Integer idCliente;
+    private Integer idVendedor;
     private Date fecha;
     private Integer total;
     private Double descuento;
     private Integer totalFinal;
     private String estado;
-    private List<Integer> cuponesAplicados;
+    private List<CuponesAplicados> cuponesAplicados;
 
 }

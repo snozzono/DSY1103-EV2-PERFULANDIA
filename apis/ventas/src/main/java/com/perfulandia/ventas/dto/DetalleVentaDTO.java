@@ -10,7 +10,7 @@ import lombok.*;
 @Data
 public class DetalleVentaDTO {
 
-    private Producto producto; 
+    private Integer idProducto; 
     private Integer cantidad;
     private Integer precioUnitario;
 

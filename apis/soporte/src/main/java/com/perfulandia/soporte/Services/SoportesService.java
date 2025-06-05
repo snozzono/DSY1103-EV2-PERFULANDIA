@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.perfulandia.soporte.Config.SoporteMapper;
-import com.perfulandia.soporte.Models.TicketSoporte;
-import com.perfulandia.soporte.Repositories.TecnicosRepository;
-import com.perfulandia.soporte.Repositories.TicketSoporteRepository;
+import com.perfulandia.soporte.Models.*;
+import com.perfulandia.soporte.Repositories.*;
 import com.perfulandia.soporte.dto.*;
-import com.perfulandia.Clientes.repository.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,17 +27,15 @@ public class SoportesService {
     ticket.setEstado(request.getEstado());
     ticket.setFechaCreacion(request.getFechaCreacion());
     ticket.setFechaResolucion(request.getFechaResolucion());
-    ticket
-    .setCliente(clienteRepository
-      .findById(request.getClienteId()
-      .longValue())
-      .orElseThrow(()
-        -> new RuntimeException("Cliente no encontrado")));
-    ticket
-    .setTecnico(tecnicoRepository
-    .findById(request
-    .getTecnicoId())
-    .orElseThrow(() -> new RuntimeException("Técnico no encontrado")));
+    
+    Cliente cliente = clienteRepository.findById(request.getClienteId().longValue())
+      .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+    ticket.setCliente(cliente);
+
+    Tecnicos tecnico = tecnicoRepository.findById(request.getTecnicoId())
+      .orElseThrow(() -> new RuntimeException("Técnico no encontrado"));
+    ticket.setTecnico(tecnico);
+    
     return ticketRepository.save(ticket);
   }
 
