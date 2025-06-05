@@ -24,16 +24,16 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
-    public Optional<Producto> findById(Long id) {
+    public Optional<Producto> findById(Integer id) {
         return productoRepository.findById(id);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         productoRepository.deleteById(id);
     }
 
-    public Producto update(Long id, Producto producto) {
-        producto.setIdProducto(id);
+    public Producto update(Integer id, Producto producto) {
+        producto.setId(id);
         return productoRepository.save(producto);
     }
 }

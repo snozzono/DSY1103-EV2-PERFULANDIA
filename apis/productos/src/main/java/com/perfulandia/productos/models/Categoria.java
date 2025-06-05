@@ -1,15 +1,20 @@
 package com.perfulandia.productos.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Table(name = "categorias")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
+    @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
+
 }

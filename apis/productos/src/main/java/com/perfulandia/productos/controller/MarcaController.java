@@ -27,18 +27,18 @@ public class MarcaController {
     }
 
     @GetMapping("/{id}")
-    public Marca buscarPorId(@PathVariable Long id) {
+    public Marca buscarPorId(@PathVariable Integer id) {
         return marcaService.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
-    public Marca actualizar(@PathVariable Long id, @RequestBody Marca marca) {
+    public Marca actualizar(@PathVariable Integer id, @RequestBody Marca marca) {
         marca.setId(id);
         return marcaService.save(marca);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@PathVariable Integer id) {
         marcaService.deleteById(id);
     }
 }

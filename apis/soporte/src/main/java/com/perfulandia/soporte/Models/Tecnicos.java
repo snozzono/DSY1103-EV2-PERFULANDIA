@@ -6,8 +6,6 @@ import java.sql.Date;
 
 import jakarta.persistence.*;
 
-import com.perfulandia.auth.models.Usuario;
-
 @Entity
 @Table(name = "tecnicos")
 @AllArgsConstructor

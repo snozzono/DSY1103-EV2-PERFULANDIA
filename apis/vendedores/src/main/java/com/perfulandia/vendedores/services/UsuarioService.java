@@ -1,4 +1,4 @@
-package com.perfulandia.auth.services;
+package com.perfulandia.vendedores.services;
 
 import com.perfulandia.auth.models.Usuario;
 import com.perfulandia.auth.repository.UsuarioRepository;

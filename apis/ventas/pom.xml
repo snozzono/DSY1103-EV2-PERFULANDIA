@@ -71,16 +71,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.perfulandia</groupId>
-			<artifactId>clientes</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.perfulandia</groupId>
-			<artifactId>vendedores</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.perfulandia</groupId>
 			<artifactId>productos</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

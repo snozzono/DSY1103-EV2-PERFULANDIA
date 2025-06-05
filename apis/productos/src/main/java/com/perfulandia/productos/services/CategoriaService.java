@@ -24,11 +24,11 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 
-    public Optional<Categoria> findById(Long id) {
+    public Optional<Categoria> findById(Integer id) {
         return categoriaRepository.findById(id);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         categoriaRepository.deleteById(id);
     }
 }

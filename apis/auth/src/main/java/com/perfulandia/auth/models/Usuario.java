@@ -3,7 +3,7 @@ package com.perfulandia.auth.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
+@Entity(name = "usuarioAuth")
 @Data
 @Table(name = "usuarios")
 public class Usuario {

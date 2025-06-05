@@ -1,7 +1,5 @@
 package com.perfulandia.soporte.Models;
 
-import com.perfulandia.Clientes.models.Cliente;
-
 import jakarta.persistence.*;
 import lombok.*;
 import java.sql.Date;

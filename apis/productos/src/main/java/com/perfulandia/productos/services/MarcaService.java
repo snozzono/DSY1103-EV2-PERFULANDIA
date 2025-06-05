@@ -24,11 +24,11 @@ public class MarcaService {
         return marcaRepository.findAll();
     }
 
-    public Optional<Marca> findById(Long id) {
+    public Optional<Marca> findById(Integer id) {
         return marcaRepository.findById(id);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         marcaRepository.deleteById(id);
     }
 }

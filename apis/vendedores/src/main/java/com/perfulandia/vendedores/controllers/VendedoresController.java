@@ -49,7 +49,7 @@ public class VendedoresController {
     }
 
     @GetMapping("/sucursal/{id}")
-    public ResponseEntity<List<Vendedores>> getVendorsBySucursal(@PathVariable Integer id) {
+    public ResponseEntity<List<Vendedores>> getVendorsBySucursal(@PathVariable Long id) {
         List<Vendedores> vendedores = vendedoresService.obtenerVendedoresPorSucursal(id);
         return ResponseEntity.status(HttpStatus.OK).body(vendedores);
     }

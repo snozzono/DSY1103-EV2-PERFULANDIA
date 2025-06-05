@@ -1,51 +1,106 @@
 package com.perfulandia.vendedores.config;
 
-import com.perfulandia.auth.repository.UsuarioRepository;
-import com.perfulandia.vendedores.dto.SucursalesDTO;
-import com.perfulandia.vendedores.dto.VendedoresDTO;
-import com.perfulandia.vendedores.models.Sucursales;
-import com.perfulandia.vendedores.models.Vendedores;
-import com.perfulandia.vendedores.repositories.SucursalesRepository;
+import org.springframework.stereotype.Component;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import com.perfulandia.vendedores.dto.*;
+import com.perfulandia.vendedores.models.*;
+import com.perfulandia.vendedores.repositories.*;
+
+import lombok.*;
 
 @Data
 @RequiredArgsConstructor
+@Component
 public class MapperVendedores {
 
-    private final UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;  
     private final SucursalesRepository sucursalRepository;
+    private final VendedoresRepository vendedoresRepository;
 
-    // Aquí puedes agregar métodos de mapeo entre entidades y DTOs si es necesario
-    // Por ejemplo, para convertir un objeto Vendedores a un objeto VendedoresDTO
+    public Vendedores mapToVendedor(CrearVendedorRequest request) {
+        Vendedores vendedor = new Vendedores();
+        vendedor.setFechaIngreso(request.getFechaIngreso());
+        vendedor.setActivo(request.isActivo());
 
-    // Ejemplo de método de mapeo (puedes ajustar según tus necesidades)
-    
-    public static VendedoresDTO toDTO(Vendedores vendedor) {
-        if (vendedor == null) {
-            return null;
-        }
-        VendedoresDTO dto = new VendedoresDTO();
-        dto.setIdVendedor(vendedor.getId());
-        dto.setIdUsuario(vendedor.getUsuario().getId().intValue());
-        dto.setIdSucursal(vendedor.getSucursal().getId());
-        dto.setFechaIngreso(vendedor.getFechaIngreso());
-        dto.setActivo(vendedor.isActivo());
-        return dto;
+        Usuario usuario = new Usuario();
+        usuario.setUsername(request.getUsername());
+        usuario.setPassword(request.getPassword());
+        usuario.setEmail(request.getEmail());
+        vendedor.setUsuario(usuario);
+
+        Sucursales sucursal = new Sucursales();
+        sucursal.setNombre(request.getNombreSucursal());
+        sucursal.setDireccion(request.getDireccion());
+        sucursal.setTelefono(request.getTelefono());
+        sucursal.setEncargado(request.getEncargado());
+        sucursalRepository.save(sucursal);
+        vendedor.setSucursal(sucursal);
+
+        return vendedor;
     }
 
-    public static SucursalesDTO toSucursalDTO(Sucursales sucursal) {
-        if (sucursal == null) {
-            return null;
-        }
-        SucursalesDTO dto = new SucursalesDTO();
-        dto.setIdSucursal(sucursal.getId());
-        dto.setNombre(sucursal.getNombre());
-        dto.setDireccion(sucursal.getDireccion());
-        dto.setTelefono(sucursal.getTelefono());
-        dto.setEncargado(sucursal.getEncargado());
-        return dto;
+    public CrearVendedorRequest mapToCrearVendedorRequest(Vendedores vendedor) {
+        CrearVendedorRequest request = new CrearVendedorRequest();
+        request.setFechaIngreso(vendedor.getFechaIngreso());
+        request.setActivo(vendedor.isActivo());
+        request.setUsername(vendedor.getUsuario().getUsername());
+        request.setPassword(vendedor.getUsuario().getPassword());
+        request.setEmail(vendedor.getUsuario().getEmail());
+        request.setNombreSucursal(vendedor.getSucursal().getNombre());
+        request.setDireccion(vendedor.getSucursal().getDireccion());
+        request.setTelefono(vendedor.getSucursal().getTelefono());
+        request.setEncargado(vendedor.getSucursal().getEncargado());
+        return request;
     }
-    
+
+    public Vendedores mapearCrearVendedorRequestAVendedores(CrearVendedorRequest request) {
+        return mapToVendedor(request);
+    }
+    public CrearVendedorRequest mapearVendedoresACrearVendedorRequest(Vendedores vendedor) {
+        return mapToCrearVendedorRequest(vendedor);
+    }
+    public Vendedores mapearActualizarVendedorAVendedores(Vendedores vendedor, CrearVendedorRequest request) {
+        vendedor.setFechaIngreso(request.getFechaIngreso());
+        vendedor.setActivo(request.isActivo());
+
+        Usuario usuario = vendedor.getUsuario();
+        usuario.setUsername(request.getUsername());
+        usuario.setPassword(request.getPassword());
+        usuario.setEmail(request.getEmail());
+        vendedor.setUsuario(usuario);
+
+        Sucursales sucursal = vendedor.getSucursal();
+        sucursal.setNombre(request.getNombreSucursal());
+        sucursal.setDireccion(request.getDireccion());
+        sucursal.setTelefono(request.getTelefono());
+        sucursal.setEncargado(request.getEncargado());
+        vendedor.setSucursal(sucursalRepository.save(sucursal));
+
+        return vendedor;
+    }
+    public CrearVendedorRequest mapearActualizarVendedorACrearVendedorRequest(Vendedores vendedor) {
+        CrearVendedorRequest request = new CrearVendedorRequest();
+        request.setFechaIngreso(vendedor.getFechaIngreso());
+        request.setActivo(vendedor.isActivo());
+        request.setUsername(vendedor.getUsuario().getUsername());
+        request.setPassword(vendedor.getUsuario().getPassword());
+        request.setEmail(vendedor.getUsuario().getEmail());
+        request.setNombreSucursal(vendedor.getSucursal().getNombre());
+        request.setDireccion(vendedor.getSucursal().getDireccion());
+        request.setTelefono(vendedor.getSucursal().getTelefono());
+        request.setEncargado(vendedor.getSucursal().getEncargado());
+        return request;
+    }
+    public Vendedores mapearVendedoresACrearVendedor(CrearVendedorRequest request) {
+        return mapToVendedor(request);
+    }
+    public CrearVendedorRequest mapearCrearVendedorAVendedores(Vendedores vendedor) {
+        return mapToCrearVendedorRequest(vendedor);
+}
+    public Vendedores mapearVendedoresACrearVendedorRequest(CrearVendedorRequest request) {
+        return mapToVendedor(request);
+    }
+    public CrearVendedorRequest mapearCrearVendedorRequestAVendedores(Vendedores vendedor) {
+        return mapToCrearVendedorRequest(vendedor);
+    }
 }

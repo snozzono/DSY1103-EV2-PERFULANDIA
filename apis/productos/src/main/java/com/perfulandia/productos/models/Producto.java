@@ -1,5 +1,6 @@
 package com.perfulandia.productos.models;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -16,7 +17,7 @@ public class Producto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProducto;
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private String nombre;
@@ -25,13 +26,10 @@ public class Producto {
     private String descripcion;
 
     @Column(nullable = false)
-    private Long precio;
+    private Integer precio;
 
     @Column(nullable = false)
-    private Long stock;
-
-    @Column(nullable = false)
-    private String estado; // Activo, Inactivo, etc.
+    private Integer stock;
 
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)

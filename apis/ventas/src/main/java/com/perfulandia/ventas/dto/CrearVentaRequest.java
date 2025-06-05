@@ -13,8 +13,8 @@ import lombok.Data;
 @Data
 public class CrearVentaRequest {
 
-    private Cliente cliente;
-    private Vendedores vendedor;
+    private Integer idCliente;
+    private Integer idVendedor;
     private Date fecha;
     private Integer total;
     private Double descuento;
