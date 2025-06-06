@@ -37,5 +37,5 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = true)
-    private Categoria categorias; // Relación con la entidad categorias, si es necesario
+    private Categorias categorias; // Relación con la entidad categorias, si es necesario
 }

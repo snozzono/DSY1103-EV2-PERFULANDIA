@@ -1,6 +1,6 @@
 package com.perfulandia.productos.services;
 
-import com.perfulandia.productos.models.Categoria;
+import com.perfulandia.productos.models.Categorias;
 import com.perfulandia.productos.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +16,15 @@ public class CategoriaService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    public Categoria save(Categoria categoria) {
+    public Categorias save(Categorias categoria) {
         return categoriaRepository.save(categoria);
     }
 
-    public List<Categoria> findAll() {
+    public List<Categorias> findAll() {
         return categoriaRepository.findAll();
     }
 
-    public Optional<Categoria> findById(Integer id) {
+    public Optional<Categorias> findById(Integer id) {
         return categoriaRepository.findById(id);
     }
 
