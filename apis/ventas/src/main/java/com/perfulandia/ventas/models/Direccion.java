@@ -3,7 +3,7 @@ package com.perfulandia.ventas.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Entity
+@Entity(name = "VentasDireccion")
 @Table(name = "direcciones")
 @Data
 public class Direccion {

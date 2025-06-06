@@ -8,8 +8,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
+@Component
 public class JwtUtil {
-    
     
     private final String SECRET = "clave_super_segura_de_mas_de_64_bytes_de_longitud_esto_es_necesario_para_HS512";
     private final long EXPIRATION_TIME = 86400000; // 24 horas

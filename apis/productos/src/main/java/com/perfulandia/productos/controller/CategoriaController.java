@@ -1,7 +1,7 @@
 
 package com.perfulandia.productos.controller;
 
-import com.perfulandia.productos.models.Categoria;
+import com.perfulandia.productos.models.Categorias;
 import com.perfulandia.productos.services.CategoriaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,22 +18,22 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public Categoria crear(@RequestBody Categoria categoria) {
+    public Categorias crear(@RequestBody Categorias categoria) {
         return categoriaService.save(categoria);
     }
 
     @GetMapping
-    public List<Categoria> listar() {
+    public List<Categorias> listar() {
         return categoriaService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Categoria buscarPorId(@PathVariable Integer id) {
+    public Categorias buscarPorId(@PathVariable Integer id) {
         return categoriaService.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
-    public Categoria actualizar(@PathVariable Integer id, @RequestBody Categoria categoria) {
+    public Categorias actualizar(@PathVariable Integer id, @RequestBody Categorias categoria) {
         categoria.setId(id);
         return categoriaService.save(categoria);
     }

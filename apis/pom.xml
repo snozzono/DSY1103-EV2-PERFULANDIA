@@ -14,12 +14,15 @@
     <description>Parent POM para las APIs de Perfulandia</description>
 
     <modules>
+        <module>auth</module>
         <module>clientes</module>
+        <module>envios</module>
+        <module>gateway</module>
+        <module>inventario</module>
         <module>productos</module>
         <module>ventas</module>
-        <module>vendedores</module>
-        <module>auth</module>
         <module>soporte</module>
+        <module>vendedores</module>
     </modules>
 
     <properties>

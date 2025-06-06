@@ -1,6 +1,6 @@
 package com.perfulandia.ventas.dto;
 
-import com.perfulandia.productos.models.Categoria;
+import com.perfulandia.productos.models.Categorias;
 import com.perfulandia.productos.models.Marca;
 
 import lombok.Data;

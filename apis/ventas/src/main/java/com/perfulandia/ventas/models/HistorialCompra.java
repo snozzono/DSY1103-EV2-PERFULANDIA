@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "VentasHistorialCompra")
 @Table(name = "historial_compras")
 @Data
 public class HistorialCompra {
