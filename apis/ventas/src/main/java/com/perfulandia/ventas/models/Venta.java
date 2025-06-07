@@ -15,34 +15,32 @@ public class Venta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_venta")
     private Integer idVenta;
 
     @OneToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Clientes cliente;
+    //, referencedColumnName = "cliente_id"
 
     @OneToOne
-    @JoinColumn(name = "vendedor_id", nullable = false)
+    @JoinColumn(name = "id_vendedor", nullable = false)
     private Vendedores vendedor;
+    //, referencedColumnName = "vendedor_id"
 
-    @Column(nullable = false)
+    @Column(name = "fecha_venta", nullable = false)
     private Date fecha;
-
-    @Column(nullable = false)
-    private Integer total;
 
     @Column(nullable = false)
     private Double descuento;
 
     @Column(nullable = false)
-    private Integer totalFinal;
-
-    @Column(nullable = false)
     private String estado;
 
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CuponesAplicados> cuponesAplicados;
+    @Column(nullable = false)
+    private Integer total;
 
-    @OneToMany(mappedBy = "idProducto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Producto> productos; // prodcutos con DetalleVenta
+    @Column(nullable = false)
+    private Integer totalFinal;
+
 }

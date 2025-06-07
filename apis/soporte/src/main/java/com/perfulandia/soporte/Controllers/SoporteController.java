@@ -14,33 +14,29 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/soporte")
 @RequiredArgsConstructor
 public class SoporteController {
     
     private final SoportesService soporteService;
 
-    @PostMapping("/soporte/tickets")
+    @PostMapping("/tickets")
     public ResponseEntity<TicketSoporte> crearTicket(@RequestBody CrearTicketSoporteRequest request) {
         TicketSoporte ticketSoporte = soporteService.crearTicket(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(ticketSoporte);
     }
         
-    @GetMapping("/soporte/tickets/cliente/{id}")
+    @GetMapping("/tickets/cliente/{id}")
     public List<TicketSoporteDTO> obtenerTicketsPorIdCliente(@PathVariable Integer id) {
         return soporteService.obtenerTicketsPorCliente(id);
     }
 
-    @PutMapping("soporte/tickets/{id}/estado")
+    @PutMapping("/tickets/{id}/estado")
     public ResponseEntity<TicketSoporteDTO> actualizarTicket(@PathVariable Integer id, @RequestBody TicketSoporteDTO ticketSoporteDTO) {
         soporteService.actualizarTicket(id, ticketSoporteDTO);
         return ResponseEntity.ok(ticketSoporteDTO);

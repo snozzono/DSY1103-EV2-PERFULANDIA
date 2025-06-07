@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.perfulandia.vendedores.config.MapperVendedores;
 import com.perfulandia.ventas.config.VentasMapper;
+import com.perfulandia.ventas.dto.*;
 import com.perfulandia.ventas.models.*;
 import com.perfulandia.ventas.repository.*;
 
-
-
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -22,41 +22,38 @@ public class VentasService {
    private final VendedorRepository vendedorRepository;
    private final ClienteRepository clienteRepository;
 
-private final VentaRepository ventaRepository;
-private final CuponesRepository cuponesRepository;
+   private final VentaRepository ventaRepository;
+   private final CuponesRepository cuponesRepository;
+   private final ProductoRepository productosRepository;
+   private final CuponesAplicadosRepository cuponesAplicadosRepository;
 
-public Venta crearVenta(Venta req) {
-   Cliente cliente = clienteRepository.findById(req.getCliente().getId().intValue())
-      .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + req.getCliente().getId()));
-
-   Vendedores vendedor = vendedorRepository.findById(req.getVendedor().getId())
-      .orElseThrow(() -> new RuntimeException("Vendedor no encontrado con ID: " + req.getVendedor().getId()));
-
-   Venta venta = new Venta();
-   venta.setCliente(cliente);
-   venta.setVendedor(vendedor);
-   venta.setFecha(new Date(System.currentTimeMillis()));
-   venta.setTotal(req.getTotal());
-
-   if (req.getCuponesAplicados() != null && !req.getCuponesAplicados().isEmpty()) {
-      for (Object cuponObj : req.getCuponesAplicados()) {
-         Long cuponId;
-         if (cuponObj instanceof Integer) {
-            cuponId = ((Integer) cuponObj).longValue();
-         } else if (cuponObj instanceof Long) {
-            cuponId = (Long) cuponObj;
-         } else {
-            throw new RuntimeException("Tipo de ID de cupón no soportado: " + cuponObj);
-         }
-         Cupones cupon = cuponesRepository.findById(cuponId)
-            .orElseThrow(() -> new RuntimeException("Cupón no encontrado con ID: " + cuponId));
-         CuponesAplicados cuponAplicado = new CuponesAplicados();
-         cuponAplicado.setVenta(venta);
-         cuponAplicado.setCupon(cupon);
-         venta.getCuponesAplicados().add(cuponAplicado);
-      }
+public Venta crearVenta(@RequestBody CrearVentaRequest req) {
+   // Validar entrada
+   if (req == null) {
+      throw new RuntimeException("La solicitud de venta es nula");
    }
 
+   // Mapear request a entidad Venta usando el mapper
+   Venta venta = ventaMapper.crearVentaRequestToVenta(req);
+
+   // Asignar cliente
+   Clientes cliente = clienteRepository.findById(req.getIdCliente())
+      .orElseThrow(() -> new RuntimeException("Cliente no encontrado: " + req.getIdCliente()));
+   venta.setCliente(cliente);
+
+   // Asignar vendedor
+   Vendedores vendedor = vendedorRepository.findById(req.getIdVendedor())
+      .orElseThrow(() -> new RuntimeException("Vendedor no encontrado: " + req.getIdVendedor()));
+   venta.setVendedor(vendedor);
+
+   // Asignar fecha actual y total
+   venta.setFecha(new Date(System.currentTimeMillis()));
+   venta.setDescuento(req.getDescuento());
+   venta.setEstado(req.getEstado());
+   venta.setTotal(req.getTotal());
+   venta.setTotalFinal(req.getTotalFinal());
+
+   // Guardar y retornar la venta
    return ventaRepository.save(venta);
 }
 
@@ -66,7 +63,7 @@ public Venta crearVenta(Venta req) {
    }
 
    public List<Venta> buscarVentasPorCliente(Integer clienteId) {
-      Cliente cliente = clienteRepository.findById(clienteId)
+      Clientes cliente = clienteRepository.findById(clienteId)
          .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + clienteId));
       return ventaRepository.findByCliente(cliente);
    }
