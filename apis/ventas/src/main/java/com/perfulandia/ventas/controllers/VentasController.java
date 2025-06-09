@@ -1,7 +1,6 @@
 package com.perfulandia.ventas.controllers;
 
 import com.perfulandia.ventas.dto.*;
-import com.perfulandia.ventas.dto.VentaDTO;
 import com.perfulandia.ventas.models.*;
 import com.perfulandia.ventas.services.*;
 
@@ -22,10 +21,13 @@ public class VentasController {
     private final VentasService ventaService;
 
     @PostMapping("/ventas")
-    public ResponseEntity<Venta> crearVenta(@RequestBody Venta request) {
-        Venta venta = ventaService.crearVenta(request);
-        
-        return ResponseEntity.status(HttpStatus.CREATED).body(venta);
+     public ResponseEntity<Venta> crearVenta(@RequestBody CrearVentaRequest req) {
+        try {
+            Venta venta = ventaService.crearVenta(req);
+            return ResponseEntity.ok(venta);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/ventas/{id}")

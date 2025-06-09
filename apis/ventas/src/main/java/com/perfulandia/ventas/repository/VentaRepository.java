@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.perfulandia.ventas.models.Cliente;
+import com.perfulandia.ventas.models.Clientes;
 import com.perfulandia.ventas.models.CuponesAplicados;
 import com.perfulandia.ventas.models.Venta;
 
@@ -15,6 +15,5 @@ public interface VentaRepository extends JpaRepository<Venta, Integer> {
     // Por ejemplo, para buscar ventas por cliente, fecha, etc.
 
     Optional<Venta> findByIdVenta(Integer idVenta);
-    List<Venta> findByCuponesAplicados(List<CuponesAplicados> cuponesAplicados);
-    List<Venta> findByCliente(Cliente cliente);
+    List<Venta> findByCliente(Clientes cliente);
 }

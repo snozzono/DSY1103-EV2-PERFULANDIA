@@ -13,23 +13,30 @@ public class Vendedores {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_vendedor")
+    private Integer vendedorId;
+
+    @OneToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "sucursal_id", referencedColumnName = "id")
+    @JoinColumn(name = "id_sucursal")
     private Sucursales sucursales;
+    //, referencedColumnName = "id_sucursal"
 
-    @OneToMany(mappedBy = "vendedor")
-    private List<Venta> ventas;
+    @Column(name = "nombre_completo", nullable = false)
+    private String nombre;
+
+    @Column(nullable = true)
+    private String rut;
 
     @Column(nullable = false)
     private boolean activo;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Date fechaIngreso;
 
-    @Column(nullable = false)
-    private String nombre;
 
 
 }

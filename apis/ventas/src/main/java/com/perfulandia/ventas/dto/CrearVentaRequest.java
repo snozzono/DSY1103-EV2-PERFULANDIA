@@ -16,10 +16,8 @@ public class CrearVentaRequest {
     private Integer idCliente;
     private Integer idVendedor;
     private Date fecha;
-    private Integer total;
     private Double descuento;
+    private String estado;
+    private Integer total;
     private Integer totalFinal;
-    private String estado; // "PENDIENTE", "APROBADA", "RECHAZADA"
-    private List<Integer> codigoCupon; // opcional, si se usa un cupón
-    private List<String> productos; // lista de productos vendidos
 }
