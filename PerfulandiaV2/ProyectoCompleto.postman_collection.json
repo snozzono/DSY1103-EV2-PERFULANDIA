@@ -1,0 +1,1288 @@
+{
+	"info": {
+		"_postman_id": "20f164ce-e530-4510-9b69-5184ed1d0e04",
+		"name": "ProyectoCompleto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43541562",
+		"_collection_link": "https://manuel-1620693.postman.co/workspace/Manuel's-Workspace~ac3d54c9-8273-4888-8925-965fc9d13e07/collection/43541562-20f164ce-e530-4510-9b69-5184ed1d0e04?action=share&source=collection_link&creator=43541562"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Post Cliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreUsuario\": \"ola_12ola\",\r\n  \"email\": \"Campossss@example.com\",\r\n  \"contrasena\": \"1536666\",\r\n  \"rol\": \"ADMIN\",\r\n  \"estado\": \"activo\",\r\n  \"nombreCompleto\": \"mANUEL CAMPd333OS\",\r\n  \"rut\": \"12.345.678-7\",\r\n  \"direccion\": \"Av. Siempre Viva 343\",\r\n  \"telefono\": \"+56911112324\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Vendedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreUsuario\": \"vendedor02\",\r\n  \"email\": \"vendedor02@ejemplo.com\",\r\n  \"contrasena\": \"abc123333\",\r\n  \"rol\": \"vendedor\",\r\n  \"estado\": \"activo\",\r\n  \"nombreCompleto\": \"Camila Antonia\",\r\n  \"rut\": \"11.223.334-5\",\r\n  \"telefono\": \"+56911110000\",\r\n  \"areaVentas\": \"Región Metropolitana\",\r\n  \"direccion\": \"av los mayas\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreUsuario\": \"Violet\",\r\n  \"email\": \"admin01@ejemplo.com\",\r\n  \"contrasena\": \"082003\",\r\n  \"rol\": \"admin\",\r\n  \"estado\": \"activo\",\r\n  \"nombreCompleto\": null,\r\n  \"rut\": 21212121,\r\n  \"telefono\": 455454534,\r\n  \"areaVentas\": null,\r\n  \"direccion\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Nuevo Registro Inventario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWV2ZSIsInVzZXJuYW1lIjoic2FldmUiLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0OTA1NjAxOSwiZXhwIjoxNzQ5MTQyNDE5fQ.JdYg9k7m2E12sO8WopPSU6Pb3Og0yZqPhPmIQm3D8ZWa9m26QFetUxubUBpyFWHcaCNgW12e3apV_vSEPJkQoA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idProducto\": 4,\r\n  \"stockDisponible\": 1000000,\r\n  \"ubicacionBodega\": \"Bodega meaigs\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/proxy/inventario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"proxy",
+								"inventario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api Gateway",
+			"item": [
+				{
+					"name": "Ping",
+					"item": [
+						{
+							"name": "Ping",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/ping",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"ping"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Usuarios",
+					"item": [
+						{
+							"name": "Login Gateway",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombreUsuario\": \"violet\",\r\n  \"contrasena\": \"082003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Usuarios",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Usuarios ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWV2ZSIsInVzZXJuYW1lIjoic2FldmUiLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0OTA1NjAxOSwiZXhwIjoxNzQ5MTQyNDE5fQ.JdYg9k7m2E12sO8WopPSU6Pb3Og0yZqPhPmIQm3D8ZWa9m26QFetUxubUBpyFWHcaCNgW12e3apV_vSEPJkQoA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/usuarios/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"usuarios",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Usuario ID SOLO ADMIN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWV2ZSIsInVzZXJuYW1lIjoic2FldmUiLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0OTA1NjAxOSwiZXhwIjoxNzQ5MTQyNDE5fQ.JdYg9k7m2E12sO8WopPSU6Pb3Og0yZqPhPmIQm3D8ZWa9m26QFetUxubUBpyFWHcaCNgW12e3apV_vSEPJkQoA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/usuarios/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"usuarios",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Clientes",
+					"item": [
+						{
+							"name": "Post Clientes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n        \"nombreCompleto\": \"Lamine Yamaaaaaaaaal\",\r\n        \"rut\": \"21.211.211.5\",\r\n        \"direccion\": \"Av los mayas 400\",\r\n        \"telefono\": \"+56919988456\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Cliente ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/clientes/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"clientes",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Cliente ID SOLO ADMIN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/clientes/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"clientes",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Cliente ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n        \"nombreCompleto\": \"Lamine YABINEEEEEE\",\r\n        \"rut\": \"12.3115.678-7\",\r\n        \"direccion\": \"Av.  12333333\",\r\n        \"telefono\": \"+56919988456\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/clientes/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"clientes",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vendedores",
+					"item": [
+						{
+							"name": "Get Vendedores",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/vendedores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"vendedores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Vendedores Sucursal",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/vendedores/sucursal/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"vendedores",
+										"sucursal",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Vendedor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idUsuario\": 14,\r\n  \"nombreCompleto\": \"Manuel Rodriguez\",\r\n  \"rut\": \"12345678444444-9121212121\",\r\n  \"sucursales\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/vendedores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"vendedores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Vendedores ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idUsuario\": 16,\r\n  \"nombreCompleto\": \"Violet Evergarden\",\r\n  \"rut\": \"12345678444444-9\",\r\n  \"sucursales\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/vendedores/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"vendedores",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Vendedores ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idUsuario\": 16,\r\n  \"nombreCompleto\": \"Violeta rocia evergarden\",\r\n  \"rut\": \"12345678444444-9\",\r\n  \"sucursales\": 1\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/vendedores/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"vendedores",
+										"9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Productos",
+					"item": [
+						{
+							"name": "Post Producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombre\": \"Mouse Logiteh\",\r\n  \"descripcion\": \"logitech\",\r\n  \"precioUnitario\": 100000,\r\n  \"stock\": 10000000,\r\n  \"categoria\": \"Tecnologia\",\r\n  \"activo\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Productos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Productos ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/productos/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"productos",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Producto ID SOLO ADMIN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/productos/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"productos",
+										"8"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Inventario",
+					"item": [
+						{
+							"name": "Post Movimiento Inventario",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idProducto\": 4,\r\n  \"cantidad\": 1,\r\n  \"tipoMovimiento\": \"Salida\",\r\n  \"fecha\": \"2025-06-04T19:30:00\",\r\n  \"descripcion\": \"Delivery al sur de chile\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/inventario/movimiento",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"inventario",
+										"movimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Stock Producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/inventario/producto/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"inventario",
+										"producto",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Inventario",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idProducto\": 4,\r\n  \"nuevoStock\": 500\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/inventario/ajuste",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"inventario",
+										"ajuste"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ventas",
+					"item": [
+						{
+							"name": "Post Ventas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idCliente\": 3,\r\n  \"idVendedor\": 9,\r\n  \"fechaVenta\": \"2025-11-11\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/ventas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"ventas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Venta ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/ventas/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"ventas",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Cliente ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/ventas/cliente/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"ventas",
+										"cliente",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Cupones",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"codigo\": \"BalatoMuyBalato\",\r\n  \"descuento\": 200,\r\n  \"fechaExpiracion\": \"2026-11-08\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/ventas/cupones/validar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"ventas",
+										"cupones",
+										"validar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Envios",
+					"item": [
+						{
+							"name": "Post Envios",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"idVenta\": 12,\r\n  \"direccionEnvio\": \"Los mayas 40040\",\r\n  \"estadoEnvio\": \"EN CAMINO\",\r\n  \"fechaEnvio\": \"2025-06-05\",\r\n  \"fechaEntrega\": \"2025-06-10\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/envios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"envios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Obtener Envio ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/envios/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"envios",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Estado Envio",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estado\": \"Completado\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/envios/8/estado",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"envios",
+										"8",
+										"estado"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Soporte Ticket",
+					"item": [
+						{
+							"name": "Crear Ticket Soporte",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tipoTicket\": \"Consulta técnica\",\r\n  \"descripcion\": \"No puedo acceder a mi cuenta.\",\r\n  \"idUsuario\": 8,\r\n  \"tecnicoId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/soporte/tickets",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"soporte",
+										"tickets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDI0NzQwLCJleHAiOjE3NDk1MTExNDB9.yvuJ4ySMQuY9DvQFhwboYz6P8I1INnF8YDresazSRNakCtM2V9HMpJEz9RrCCWB_Lc4hzfLKuA-SJFeOGeLb-Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/soporte/tickets/cliente/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"soporte",
+										"tickets",
+										"cliente",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put Ticket Soporte",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWaW9sZXQiLCJ1c2VybmFtZSI6IlZpb2xldCIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzQ5NDAyNTMwLCJleHAiOjE3NDk0ODg5MzB9.p8iw-3qubNQDUdSpZ5w9oY_u3GPiNiBdc37acCBMyp0N--YLG3569lZQPf1la40K8iRlCx9cWgTIkyx4nMAPQw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estado\": \"Resuelto\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/proxy/soporte/tickets/5/estado",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"proxy",
+										"soporte",
+										"tickets",
+										"5",
+										"estado"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
