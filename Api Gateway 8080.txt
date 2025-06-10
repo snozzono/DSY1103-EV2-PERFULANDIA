@@ -1,0 +1,15 @@
+Api Gateway 8080
+Auth 8081
+Clientes  8082
+Soporte 8083
+Vendedores 8084
+Inventario 8085
+Envios 8086
+Productos 8087
+Ventas 8088
+
+
+
+Vendedores al usar usar get id da error 403
+Soporte dar error 403
+
