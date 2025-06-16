@@ -1,19 +1,26 @@
 # DSY1103-EV2-PERFULANDIA
-repo de la api para desarrollo fullstack 1
 
-## Puertos
-Api Gateway 8080
-Auth 8081
-Clientes  8082
-Soporte 8083
-Vendedores 8084
-Inventario 8085
-Envios 8086
-Productos 8087
-Ventas 8088
+Repositorio de la API para la evaluación de **Desarrollo Fullstack 1**.
 
-## Dependencias no disponbles en initializr
+## Puertos asignados por microservicio
 
+| Servicio         | Puerto |
+|------------------|--------|
+| API Gateway      | 8080   |
+| Autenticación    | 8081   |
+| Clientes         | 8082   |
+| Soporte          | 8083   |
+| Vendedores       | 8084   |
+| Inventario       | 8085   |
+| Envíos           | 8086   |
+| Productos        | 8087   |
+| Ventas           | 8088   |
+
+## Dependencias adicionales (no disponibles en Spring Initializr)
+
+Agrega las siguientes dependencias manualmente en tu archivo `pom.xml`:
+
+```xml
 <!-- SpringDoc OpenAPI con Swagger UI -->
 <dependency>
     <groupId>org.springdoc</groupId>
